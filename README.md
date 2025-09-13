@@ -12,9 +12,11 @@
 **Nex Optimizer** is a **free, lightweight optimizer with AI integrated** to boost your PC for gaming. 🖥️⚡  
 
 ### 📂 Files in this Repo
-- `NexA.dph`
-- `NexB.dph`  
-- `NexC.dph`  
+- `nex\NexA.dph`
+- `nex\NexB.dph`  
+- `nex\NexC.dph`
+- `nex\hash`
+- `scripts\install.ps1`
 
 ### 💬 Support
 Report issues via our **[Community/Discord](https://discord.gg/rGWVhKyHV6)**.  .  
@@ -26,9 +28,11 @@ Report issues via our **[Community/Discord](https://discord.gg/rGWVhKyHV6)**.  .
 **Nex Optimizer** es una herramienta **gratuita y ligera** para mejorar tu PC mientras juegas. 🖥️⚡  
 
 ### 📂 Archivos en este Repositorio
-- `NexA.dph`   
-- `NexB.dph`  
-- `NexC.dph`  
+- `nex\NexA.dph`
+- `nex\NexB.dph`  
+- `nex\NexC.dph`
+- `nex\hash`
+- `scripts\install.ps1`
 
 ### 💬 Soporte
 Reporta errores o sugerencias vía nuestra **[Comunidad/Discord](https://discord.gg/rGWVhKyHV6)**.  

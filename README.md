@@ -16,12 +16,6 @@
 - `NexB.dph`  
 - `NexC.dph`  
 
-### 🚀 Install
-1. Download all parts ✅  
-2. Put them in the **same folder** 📁  
-3. Run the installer script ▶️  
-4. Follow instructions 🖱  
-
 ### 💬 Support
 Report issues via our **[Community/Discord](https://discord.gg/rGWVhKyHV6)**.  .  
 
@@ -35,12 +29,6 @@ Report issues via our **[Community/Discord](https://discord.gg/rGWVhKyHV6)**.  .
 - `NexA.dph`   
 - `NexB.dph`  
 - `NexC.dph`  
-
-### 🚀 Instalar
-1. Descarga las tres partes ✅  
-2. Ponlas en la **misma carpeta** 📁  
-3. Ejecuta el script del instalador ▶️  
-4. Sigue instrucciones 🖱  
 
 ### 💬 Soporte
 Reporta errores o sugerencias vía nuestra **[Comunidad/Discord](https://discord.gg/rGWVhKyHV6)**.  

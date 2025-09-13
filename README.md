@@ -1,7 +1,8 @@
 # 🎮 Nex Optimizer – AI-Driven Optimizer 🚀
 
--**This repository is only used to host necessary files for Nex lightweight installation**  
-
+- **This repository is only used to host necessary files for Nex CLI installation**  
+- **Este repositorio solo se utiliza para alojar los archivos necesarios para la instalación CLI de Nex**
+  
 [🇺🇸 English](#english-version) | [🇪🇸 Español](#versión-en-español)
 
 ---

@@ -1,3 +1,5 @@
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+chcp 65001
 $Part1Url = "https://raw.githubusercontent.com/nexoptimizer/nex/main/NexA.dph"
 $Part2Url = "https://raw.githubusercontent.com/nexoptimizer/nex/main/NexB.dph"
 $Part3Url = "https://raw.githubusercontent.com/nexoptimizer/nex/main/NexC.dph"
@@ -16,20 +18,20 @@ $Global:Messages = @{}
 $Global:CurrentLanguage = "en"
 
 $AsciiArt = @"
-███╗   ██╗███████╗██╗  ██╗ 
-████╗  ██║██╔════╝╚██╗██╔╝ 
-██╔██╗ ██║█████╗   ╚███╔╝  
-██║╚██╗██║██╔══╝   ██╔██╗  
-██║ ╚████║███████╗██╔╝ ██╗ 
-╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ 
+ __   __     ______     __  __    
+/\ "-.\ \   /\  ___\   /\_\_\_\   
+\ \ \-.  \  \ \  __\   \/_/\_\/_  
+ \ \_\\"\_\  \ \_____\   /\_\/\_\ 
+  \/_/ \/_/   \/_____/   \/_/\/_/                                  
 "@
+
 
 # Mensajes en inglés
 $Messages_EN = @{
-    'WelcomeTitle' = 'nex optimizer installer'
+    'WelcomeTitle' = ''
     'SelectLanguage' = 'select language / seleccionar idioma:'
     'English' = '1. english'
-    'Spanish' = '2. español'
+    'Spanish' = '2. spanish'
     'LanguagePrompt' = 'enter choice (1-2)'
     'InvalidChoice' = 'invalid choice. using english as default.'
     'StartingInstallation' = 'starting nex optimizer installation...'
@@ -59,13 +61,13 @@ $Messages_EN = @{
 
 # Mensajes en español
 $Messages_ES = @{
-    'WelcomeTitle' = 'instalador nex optimizer'
+    'WelcomeTitle' = ''
     'SelectLanguage' = 'select language / seleccionar idioma:'
     'English' = '1. english'
-    'Spanish' = '2. español'
+    'Spanish' = '2. spanish'
     'LanguagePrompt' = 'ingrese opción (1-2)'
-    'InvalidChoice' = 'opción inválida. usando inglés por defecto.'
-    'StartingInstallation' = 'iniciando instalación de nex optimizer...'
+    'InvalidChoice' = 'opción invalida. usando ingles por defecto.'
+    'StartingInstallation' = 'iniciando instalacion de nex optimizer...'
     'DownloadingPart' = 'descargando'
     'DownloadCompleted' = 'componente descargado exitosamente'
     'DownloadingHash' = 'descargando verificación hash...'
@@ -73,8 +75,8 @@ $Messages_ES = @{
     'VerifyingIntegrity' = 'verificando integridad del instalador...'
     'IntegrityVerified' = 'integridad del instalador verificada exitosamente'
     'LaunchingInstaller' = 'lanzando instalador nex optimizer...'
-    'InstallationStarted' = 'instalación iniciada exitosamente'
-    'InstallationComplete' = 'proceso de instalación nex optimizer iniciado'
+    'InstallationStarted' = 'instalacion iniciada exitosamente'
+    'InstallationComplete' = 'proceso de instalacion nex optimizer iniciado'
     'ErrorInvalidUrls' = 'error: todas las urls deben usar https y ser válidas'
     'ErrorHashDownloadFailed' = 'error: fallo al descargar archivo hash'
     'ErrorDownloadFailed' = 'error: fallo al descargar componente'
@@ -104,17 +106,15 @@ function Write-ColorText($text, $color = "White") {
 
 function Show-Welcome {
     Clear-Host
-    Write-ColorText $AsciiArt -color "Cyan"
-    Write-Host ""
-    Write-ColorText (Get-Message 'WelcomeTitle') -color "Yellow"
+    Write-Host $AsciiArt -ForegroundColor Magenta
     Write-Host ""
 }
 
 function Select-Language {
-    Write-ColorText (Get-Message 'SelectLanguage') -color "Green"
+    Write-ColorText (Get-Message 'SelectLanguage') -color "Magenta"
     Write-Host ""
-    Write-Host (Get-Message 'English')
-    Write-Host (Get-Message 'Spanish')
+    Write-Host (Get-Message 'English') -ForegroundColor Magenta
+    Write-Host (Get-Message 'Spanish') -ForegroundColor Magenta
     Write-Host ""
     
     $choice = Read-Host (Get-Message 'LanguagePrompt')
@@ -140,7 +140,7 @@ function Select-Language {
 }
 
 function Throw-And-Exit($msgKey, $code=1) {
-    Write-ColorText (Get-Message $msgKey) -color "Red"
+    Write-ColorText (Get-Message $msgKey) -color "DarkRed"
     exit $code
 }
 
@@ -163,7 +163,7 @@ function Download-File {
     )
 
     if (-not (Validate-Https $Url)) {
-        Write-ColorText "error: invalid url - $Url" -color "Red"
+        Write-ColorText "error: invalid url - $Url" -color "Magenta"
         return $false
     }
 
@@ -174,7 +174,7 @@ function Download-File {
     while ($attempt -lt $MaxRetries) {
         try {
             $attempt++
-            Write-ColorText "$(Get-Message 'DownloadingPart') $ComponentName ($(Get-Message 'Attempt') $attempt $(Get-Message 'Of') $MaxRetries)..." -color "Cyan"
+            Write-ColorText "$(Get-Message 'DownloadingPart') $ComponentName ($(Get-Message 'Attempt') $attempt $(Get-Message 'Of') $MaxRetries)..." -color "Magenta"
             
             $req = [System.Net.Http.HttpRequestMessage]::new([System.Net.Http.HttpMethod]::Get, $Url)
             $responseTask = $client.SendAsync($req, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead)
@@ -231,7 +231,7 @@ function Download-HashFile {
     param([string]$Url, [string]$Destination)
     
     try {
-        Write-ColorText (Get-Message 'DownloadingHash') -color "Cyan"
+        Write-ColorText (Get-Message 'DownloadingHash') -color "Magenta"
         Invoke-WebRequest -Uri $Url -OutFile $Destination -UseBasicParsing
         return $true
     } catch {
@@ -283,12 +283,12 @@ function Launch-Installer {
     }
 
     try {
-        Write-ColorText (Get-Message 'LaunchingInstaller') -color "Green"
+        Write-ColorText (Get-Message 'LaunchingInstaller') -color "Magenta"
         Start-Process -FilePath $InstallerPath
-        Write-ColorText (Get-Message 'InstallationStarted') -color "Green"
+        Write-ColorText (Get-Message 'InstallationStarted') -color "Magenta"
         return $true
     } catch {
-        Write-ColorText "$(Get-Message 'ErrorInstallerLaunchFailed'): $_" -color "Red"
+        Write-ColorText "$(Get-Message 'ErrorInstallerLaunchFailed'): $_" -color "DarkRed"
         return $false
     }
 }
@@ -297,6 +297,7 @@ function Launch-Installer {
 
 # Configurar idioma inicial para la selección
 $Global:Messages = $Messages_EN
+
 
 # Mostrar bienvenida y seleccionar idioma
 Show-Welcome
@@ -371,7 +372,7 @@ try {
 
 # Verificar integridad y ejecutar instalador
 try {
-    Write-ColorText (Get-Message 'VerifyingIntegrity') -color "Cyan"
+    Write-ColorText (Get-Message 'VerifyingIntegrity') -color "Magenta"
     $computed = (Get-FileHash -Path $OutputPath -Algorithm SHA256).Hash
     
     if ($computed.ToLower() -ne $expectedHash.ToLower()) {
@@ -391,7 +392,6 @@ try {
         if ($launchOk) {
             Write-Host ""
             Write-ColorText (Get-Message 'InstallationComplete') -color "Green"
-            
             # Pequeña pausa para que el usuario vea el mensaje antes de que se cierre
             Start-Sleep -Seconds 2
             exit 0

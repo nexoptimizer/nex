@@ -110,6 +110,16 @@ function Show-Welcome {
     Write-Host ""
 }
 
+function Write-WithAscii {
+    param(
+        [string]$Message,
+        [ConsoleColor]$Color = "Magenta"
+    )
+    Clear-Host
+    Show-Welcome
+    Write-Host $Message -ForegroundColor $Color
+}
+
 function Select-Language {
     Write-ColorText (Get-Message 'SelectLanguage') -color "Magenta"
     Write-Host ""
@@ -174,7 +184,7 @@ function Download-File {
     while ($attempt -lt $MaxRetries) {
         try {
             $attempt++
-            Write-ColorText "$(Get-Message 'DownloadingPart') $ComponentName ($(Get-Message 'Attempt') $attempt $(Get-Message 'Of') $MaxRetries)..." -color "Magenta"
+            Write-WithAscii "$(Get-Message 'DownloadingPart') $ComponentName ($(Get-Message 'Attempt') $attempt $(Get-Message 'Of') $MaxRetries)..." 
             
             $req = [System.Net.Http.HttpRequestMessage]::new([System.Net.Http.HttpMethod]::Get, $Url)
             $responseTask = $client.SendAsync($req, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead)
@@ -292,6 +302,8 @@ function Launch-Installer {
         return $false
     }
 }
+
+
 
 # --- INICIO DEL INSTALADOR ---
 

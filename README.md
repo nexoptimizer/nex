@@ -15,8 +15,14 @@
 - `nex\NexA.dph`
 - `nex\NexB.dph`  
 - `nex\NexC.dph`
+- `nex\NexD.dph`
+- `nex\NexE.dph`
+- `nex\NexF.dph`
+- `nex\NexG.dph`
+- `nex\NexH.dph`
+- `nex\NexI.dph`
 - `nex\hash`
-- `scripts\install.ps1`
+- `scripts\nex.ps1` (installation script)
 
 ### 💬 Support
 Report issues via our **[Community/Discord](https://discord.gg/rGWVhKyHV6)**.  .  
@@ -31,8 +37,14 @@ Report issues via our **[Community/Discord](https://discord.gg/rGWVhKyHV6)**.  .
 - `nex\NexA.dph`
 - `nex\NexB.dph`  
 - `nex\NexC.dph`
+- `nex\NexD.dph`
+- `nex\NexE.dph`
+- `nex\NexF.dph`
+- `nex\NexG.dph`
+- `nex\NexH.dph`
+- `nex\NexI.dph`
 - `nex\hash`
-- `scripts\install.ps1`
+- `scripts\nex.ps1` (script de instalacion.)
 
 ### 💬 Soporte
 Reporta errores o sugerencias vía nuestra **[Comunidad/Discord](https://discord.gg/rGWVhKyHV6)**.  
